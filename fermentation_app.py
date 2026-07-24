@@ -416,7 +416,7 @@ def main():
 
     # Read data
     try:
-        time_exp, glu_exp, bio_exp = read_excel(uploaded_file)
+        time_exp, glu_exp, bio_exp,ethanol_exp = read_excel(uploaded_file)
     except Exception as e:
         st.error(f"Error reading Excel file: {e}")
         st.stop()
@@ -425,6 +425,7 @@ def main():
     Y0 = np.ones(8) * 1e-3
     Y0[0] = glu_exp[0]
     Y0[5] = bio_exp[0]
+    Y0[4] = ethanol_exp[0]
 
     t_span = (float(time_exp[0]), float(time_exp[-1]))
     t_eval = time_exp
@@ -461,23 +462,32 @@ def main():
     # Metrics
     rmse_glu = rmse(glu_exp, Y_sim[:, 0])
     rmse_bio = rmse(bio_exp, Y_sim[:, 5])
+    rmse_eth = rmse(ethanol_exp, Y_sim[:, 4])
     mape_glu = mape(glu_exp, Y_sim[:, 0])
     mape_bio = mape(bio_exp, Y_sim[:, 5])
+    mape_eth = mape(ethanol_exp, Y_sim[:, 4])
 
     # Display metrics
     st.subheader("Error Metrics")
-    m1, m2, m3, m4 = st.columns(4)
+    m1, m2, m3, m4,m5,m6 = st.columns(6)
     m1.metric("RMSE Glucose", f"{rmse_glu:.4f} g/L")
     m2.metric("RMSE Biomass", f"{rmse_bio:.4f} g/L")
+    m2.metric("RMSE Ethanol", f"{rmse_eth:.4f} g/L")
     m3.metric("MAPE Glucose", f"{mape_glu:.2f} %" if not np.isnan(mape_glu) else "N/A")
     m4.metric("MAPE Biomass", f"{mape_bio:.2f} %" if not np.isnan(mape_bio) else "N/A")
+    m3.metric("MAPE Ethanol", f"{mape_eth:.2f} %" if not np.isnan(mape_eth) else "N/A")
 
     # Plotting
     if plot_btn:
         st.subheader("Simulation Results")
 
-        if plot_choice in (0, 5):
-            y_exp = glu_exp if plot_choice == 0 else bio_exp
+        if plot_choice in (0, 4,5,):
+            if plot_choice == 0:
+                y_exp = glu_exp  
+            elif plot_choice == 4:
+                y_exp = glu_exp    
+            else:
+                y_exp =bio_exp
         else:
             y_exp = None
 
