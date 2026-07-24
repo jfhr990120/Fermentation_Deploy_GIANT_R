@@ -327,7 +327,7 @@ def main():
         # --- TOP LOGO ---
         # CHANGE THIS LINE: Replace the path with your top logo file
         st.image(
-            "C:\\Users\\Usuario\\Desktop\\JFHR\\Doctorado\\Papers y Publicaciones\\PLATFORM_PROJECT\\MY_Platform_Python\\GIANT_LOGO-NO_BACKGROUND_HD.png",
+            "GIANT_LOGO-NO_BACKGROUND_HD.png",
             use_container_width=True,
         )
         # To control width/height manually, comment out the line above and use:
@@ -388,7 +388,7 @@ def main():
         # --- BOTTOM LOGO ---
         # CHANGE THIS LINE: Replace the path with your bottom logo file
         st.image(
-            "C:\\Users\\Usuario\\Desktop\\JFHR\\Doctorado\\Papers y Publicaciones\\PLATFORM_PROJECT\\MY_Platform_Python\\FOTO PERFIL SIN FONDO.png",
+            "FOTO PERFIL SIN FONDO.png",
             use_container_width=True,
         )
         # To control width/height manually, comment out the line above and use:
