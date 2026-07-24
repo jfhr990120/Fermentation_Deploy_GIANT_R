@@ -316,7 +316,7 @@ def main():
 
     st.title("S. cerevisiae Fermentation Simulator")
     st.caption(
-        "Biochemically structured model based on Lei, Rotboll & Jorgensen (2001). "
+        "Biochemically structured model based on A biochemically structured model for Saccharomyces cerevisiae. Journal of Biotechnology, 88(3), 205-221. https://doi.org/10.1016/s0168-1656(01)00269-3. "
         "Upload your experimental data, run the simulation, and compare results."
     )
 
