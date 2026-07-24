@@ -218,6 +218,7 @@ def read_excel(uploaded_file):
             t = float(row[0])
             glu = float(row[1])
             bio = float(row[2])
+            ethanol = float(row[3])
             data.append((t, glu, bio))
         except (TypeError, ValueError):
             continue
